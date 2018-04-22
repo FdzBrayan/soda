@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Client;
 
-class ClienteController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('dasboard');
+     //   return view("dasboard");
+       return Client::all();
     }
 
     /**
