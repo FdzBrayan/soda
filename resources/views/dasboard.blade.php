@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+@foreach ($clients as $client)
+    <p>This is user {{ $client->name }}</p>
+@endforeach
 <div class="container-fluid">
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
