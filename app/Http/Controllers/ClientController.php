@@ -14,12 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-     //   $clients = Client::get();
-       // dd($clients);
-      //  return view("dasboard",compact("clients"));
-      // return Client::where("id","=","1")->get(["nickname","name"]);
-        $clients = Client::with("area")->get();
-      dd($clients);
+        $clients = Client::get();
+        return view("dasboard",compact("clients"));
     }
 
     /**

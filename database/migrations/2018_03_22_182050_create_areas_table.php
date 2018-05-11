@@ -16,7 +16,9 @@ class CreateAreasTable extends Migration
         Schema::create('areas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('icon',50);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
