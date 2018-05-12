@@ -19,5 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+//Routes client
 Route::resource('client', 'ClientController');
+//Routes client
+
+//Routes area
+Route::resource('area', 'AreaController');
+//Routes area
