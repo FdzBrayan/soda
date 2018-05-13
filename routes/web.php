@@ -25,4 +25,5 @@ Route::resource('client', 'ClientController');
 
 //Routes area
 Route::resource('area', 'AreaController');
+Route::get('getAllAreas', 'AreaController@getAll');
 //Routes area
