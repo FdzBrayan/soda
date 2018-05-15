@@ -29,6 +29,7 @@
 @endsection
 @section('script')
 <script>
+    PNotify.prototype.options.styling = "bootstrap3";
     var dataAreas;
 
     $(document).ready(function() {
@@ -37,19 +38,25 @@
 
     function initTableAreas()
     {
-        $('#tableAreas').DataTable( {
-            destroy: true,
-            data: dataAreas,
-            columns: [
-                { data: 'id' },
-                { data: 'name' },
-                { data: 'icon' },
-                { data: null, defaultContent: "<button class ='btn btn-danger btn-xs'><span class='fa fas fa-trash'></span></button>\n\
-                                               <button data-toggle='modal' href='#modalCreateArea' class ='btn btn-primary btn-xs' ><span class='fa fas fa-edit'></button>"
-                }
+         tableAreas =  $('#tableAreas').DataTable( {
+                        destroy: true,
+                        data: dataAreas,
+                        columns: [
+                            { data: 'id' },
+                            { data: 'name' },
+                            { data: 'icon' },
+                            { data: null, defaultContent: "<button class ='btnDeleteArea btn btn-danger btn-xs'><span class='fa fas fa-trash'></span></button>\n\
+                                                           <button data-toggle='modal' href='#modalCreateArea' class ='btnShowArea btn btn-primary btn-xs' ><span class='fa fas fa-edit'></button>"
+                            }
+                        ]
+                    } );
 
-            ]
-         } );
+        $('#tableAreas tbody').on( 'click', '.btnShowArea', function () {
+            rowArea = tableAreas.row($(this).parents('tr') ).data();
+            console.log('rowAreaSelected:', rowArea);
+            $('#name').val(rowArea['name']);
+            $('#icon').val(rowArea['icon']);
+        });
     }
 
     function getDataAreas()
@@ -74,8 +81,65 @@
             url: "area",
             data: $("#formArea").serialize(),
         }).done(function(data){
+            showMessage('¡Bien!','Área registrada','success');
             getDataAreas();
         });
+    });
+
+
+    $("#btnUpdateArea").click(function(e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            dataType: 'json',
+            type:'PUT',
+            url: "area/"+rowArea['id'],
+            data: $("#formArea").serialize(),
+        }).done(function(data){
+            console.log("result update:",data);
+            showMessage('¡Bien!','Área actualizada','success');
+            getDataAreas();
+        });
+    });
+
+
+    $('#tableAreas tbody').on( 'click', '.btnDeleteArea', function (e) {
+
+        var rowArea = tableAreas.row($(this).parents('tr') ).data();
+        e.preventDefault();
+
+        (new PNotify({
+            title: 'Confirmation Needed',
+            text: 'Are you sure?',
+            icon: 'glyphicon glyphicon-question-sign',
+            hide: false,
+            confirm: {
+                confirm: true
+            },
+            buttons: {
+                closer: false,
+                sticker: false
+            },
+            history: {
+                history: false
+            }
+        })).get().on('pnotify.confirm', function() {
+                $.ajax({
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                dataType: 'json',
+                type:'DELETE',
+                url: "area/"+rowArea['id'],
+            }).done(function(data){
+                console.log("result delete:",data);
+                showMessage('¡Bien!','Área eliminada','success');
+                getDataAreas();
+            });
+        }).on('pnotify.cancel', function() {
+        });
+
     });
 
 </script>

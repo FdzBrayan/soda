@@ -28,6 +28,7 @@
       </div>
       <div class="modal-footer">
         <button id="btnCreateArea"type="button" class="btn btn-primary">Crear</button>
+        <button id="btnUpdateArea"type="button" class="btn btn-primary">Actualizar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

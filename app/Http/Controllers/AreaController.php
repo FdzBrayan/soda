@@ -72,9 +72,10 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        return "update";
+        $area = Area::where('id', $id)->update(['name' => $request->name,'icon' => $request->icon]);
+        return $area;
     }
 
     /**
@@ -85,6 +86,7 @@ class AreaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $area = Area::destroy($id);
+        return $area;
     }
 }
