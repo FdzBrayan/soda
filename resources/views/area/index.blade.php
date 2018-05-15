@@ -29,6 +29,7 @@
 @endsection
 @section('script')
 <script>
+    
     PNotify.prototype.options.styling = "bootstrap3";
     var dataAreas;
 
@@ -45,7 +46,7 @@
                             { data: 'id' },
                             { data: 'name' },
                             { data: 'icon' },
-                            { data: null, defaultContent: "<button class ='btnDeleteArea btn btn-danger btn-xs'><span class='fa fas fa-trash'></span></button>\n\
+                            { data: null, defaultContent: "<button class ='btnDeleteArea btn btn-danger btn-xs' data-toggle='tooltip' data-placement='top' title='Eliminar'><span class='fa fas fa-trash'></span></button>\n\
                                                            <button data-toggle='modal' href='#modalCreateArea' class ='btnShowArea btn btn-primary btn-xs' ><span class='fa fas fa-edit'></button>"
                             }
                         ]
