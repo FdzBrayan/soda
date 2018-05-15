@@ -29,8 +29,6 @@
 @endsection
 @section('script')
 <script>
-    
-    PNotify.prototype.options.styling = "bootstrap3";
     var dataAreas;
 
     $(document).ready(function() {
@@ -46,8 +44,8 @@
                             { data: 'id' },
                             { data: 'name' },
                             { data: 'icon' },
-                            { data: null, defaultContent: "<button class ='btnDeleteArea btn btn-danger btn-xs' data-toggle='tooltip' data-placement='top' title='Eliminar'><span class='fa fas fa-trash'></span></button>\n\
-                                                           <button data-toggle='modal' href='#modalCreateArea' class ='btnShowArea btn btn-primary btn-xs' ><span class='fa fas fa-edit'></button>"
+                            { data: null, defaultContent: "<button class ='btnDeleteArea btn btn-danger btn-xs' title='Eliminar' ><span class='fa fas fa-trash'></span></button>\n\
+                                                           <button data-toggle='modal' href='#modalCreateArea' class ='btnShowArea btn btn-primary btn-xs' title='Actualizar'><span class='fa fas fa-edit'></button>"
                             }
                         ]
                     } );
@@ -72,25 +70,21 @@
         });
     }
 
-    $("#btnCreateArea").click(function(e) {
-
-        e.preventDefault();
+    $("#btnCreateArea").click(function() {
 
         $.ajax({
             dataType: 'json',
             type:'POST',
             url: "area",
             data: $("#formArea").serialize(),
-        }).done(function(data){
-            showMessage('¡Bien!','Área registrada','success');
+        }).done(function(data){        
+            swal('¡Bien!', 'Registro agregado', 'success')
             getDataAreas();
         });
     });
 
 
-    $("#btnUpdateArea").click(function(e) {
-
-        e.preventDefault();
+    $("#btnUpdateArea").click(function() {
 
         $.ajax({
             dataType: 'json',
@@ -99,47 +93,42 @@
             data: $("#formArea").serialize(),
         }).done(function(data){
             console.log("result update:",data);
-            showMessage('¡Bien!','Área actualizada','success');
+            swal('¡Bien!', 'Registro actualizado', 'success')
             getDataAreas();
         });
     });
 
 
-    $('#tableAreas tbody').on( 'click', '.btnDeleteArea', function (e) {
+    $('#tableAreas tbody').on( 'click', '.btnDeleteArea', function () {
 
         var rowArea = tableAreas.row($(this).parents('tr') ).data();
-        e.preventDefault();
+        //e.preventDefault();
+        swal({
+                title: '¿Está seguro?',
+                text: "El registro será eliminado",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar'
+                }).then((result) => {                                  
+                if (result.value) {
+                    $.ajax({
+                            headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                                dataType: 'json',
+                                type:'DELETE',
+                                url: "area/"+rowArea['id'],
+                            }).done(function(data){
+                                console.log("result delete:",data);                                
+                                getDataAreas();
+                            });
 
-        (new PNotify({
-            title: 'Confirmation Needed',
-            text: 'Are you sure?',
-            icon: 'glyphicon glyphicon-question-sign',
-            hide: false,
-            confirm: {
-                confirm: true
-            },
-            buttons: {
-                closer: false,
-                sticker: false
-            },
-            history: {
-                history: false
-            }
-        })).get().on('pnotify.confirm', function() {
-                $.ajax({
-                headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                dataType: 'json',
-                type:'DELETE',
-                url: "area/"+rowArea['id'],
-            }).done(function(data){
-                console.log("result delete:",data);
-                showMessage('¡Bien!','Área eliminada','success');
-                getDataAreas();
-            });
-        }).on('pnotify.cancel', function() {
-        });
+                    swal('¡Registro eliminado!', '¡Éxito!', 'success')
+                }
+                })
+
 
     });
 
