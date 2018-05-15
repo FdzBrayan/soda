@@ -16,8 +16,6 @@
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" >
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet" type="text/css" >
-      <!-- PNotify-->
-  <link href="{{ asset('js/pnotify/pnotify.custom.min.css') }}" rel="stylesheet" type="text/css" >
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -62,9 +60,8 @@
     <!-- Custom scripts for this page-->
     <script src="{{ asset('js/sb-admin-datatables.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin-charts.js') }}"></script>
-    <!-- PNotify-->
-    <script src="{{ asset('js/pnotify/pnotify.custom.min.js') }}"></script>
-    <script src="{{ asset('js/pnotify/showMessages.js') }}"></script>
+    <!-- SweetAlert2-->
+    <script src="{{ asset('js/sweetalert2/sweetalert2.js') }}"></script>
   </div>
   @yield('script')
 </body>
