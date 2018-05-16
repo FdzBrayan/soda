@@ -2,7 +2,7 @@
 @section('breadcrumb','Área')
 @section('content')
 @include('area.create')
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalArea">
+    <button type="button" onclick="openModalArea(1)" class="btn btn-success">
         Nueva
     </button><br><br>
     <div class="card mb-3">
@@ -45,7 +45,7 @@
                             { data: 'name' },
                             { data: 'icon' },
                             { data: null, defaultContent: "<button class ='btnDeleteArea btn btn-danger btn-xs' title='Eliminar' ><span class='fa fas fa-trash'></span></button>\n\
-                                                           <button data-toggle='modal' href='#modalArea' class ='btnShowArea btn btn-primary btn-xs' title='Actualizar'><span class='fa fas fa-edit'></button>"
+                                                           <button onclick='openModalArea(2)' class ='btnShowArea btn btn-primary btn-xs' title='Actualizar'><span class='fa fas fa-edit'></button>"
                             }
                         ]
                     } );
@@ -80,6 +80,7 @@
         }).done(function(data){        
             swal('¡Bien!', 'Registro agregado', 'success')
             getDataAreas();
+            closeModal();
         });
     });
 
@@ -95,6 +96,7 @@
             console.log("result update:",data);
             swal('¡Bien!', 'Registro actualizado', 'success')
             getDataAreas();
+            closeModal();
         });
     });
 
@@ -102,7 +104,6 @@
     $('#tableAreas tbody').on( 'click', '.btnDeleteArea', function () {
 
         var rowArea = tableAreas.row($(this).parents('tr') ).data();
-        //e.preventDefault();
         swal({
                 title: '¿Está seguro?',
                 text: "El registro será eliminado",
@@ -112,7 +113,8 @@
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, eliminar'
                 }).then((result) => {                                  
-                if (result.value) {
+                if (result.value)
+                {
                     $.ajax({
                             headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -127,10 +129,36 @@
 
                     swal('¡Registro eliminado!', '¡Éxito!', 'success')
                 }
-                })
-
-
+            })
     });
+
+    function resetModal()
+    {
+        $('#formArea').trigger("reset");
+    }
+
+    function closeModal()
+    {
+        $('#modalArea').modal('hide');
+    }
+
+    function openModalArea(action)
+    {
+        if(action == 1)
+        {
+            resetModal();
+            $("#btnUpdateArea").hide();
+            $("#btnCreateArea").show();
+            $(".modal-title").text("Crear Área");
+        }
+        else
+        {
+            $("#btnUpdateArea").show();
+            $("#btnCreateArea").hide();
+            $(".modal-title").text("Actualizar Área");
+        }
+        $('#modalArea').modal('show');
+    }
 
 </script>
 @endsection
