@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Routes client
 Route::resource('client', 'ClientController');
+Route::get('getAllClients', 'ClientController@getAll');
 //Routes client
 
 //Routes area

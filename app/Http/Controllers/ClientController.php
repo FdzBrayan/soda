@@ -17,6 +17,10 @@ class ClientController extends Controller
         return view("client.index");
     }
 
+    public function getAll()
+    {
+        return Client::with('area')->get();
+    }
     /**
      * Show the form for creating a new resource.
      *
