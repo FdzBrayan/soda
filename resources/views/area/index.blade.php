@@ -2,7 +2,7 @@
 @section('breadcrumb','Área')
 @section('content')
 @include('area.create')
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalCreateArea">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalArea">
         Nueva
     </button><br><br>
     <div class="card mb-3">
@@ -45,7 +45,7 @@
                             { data: 'name' },
                             { data: 'icon' },
                             { data: null, defaultContent: "<button class ='btnDeleteArea btn btn-danger btn-xs' title='Eliminar' ><span class='fa fas fa-trash'></span></button>\n\
-                                                           <button data-toggle='modal' href='#modalCreateArea' class ='btnShowArea btn btn-primary btn-xs' title='Actualizar'><span class='fa fas fa-edit'></button>"
+                                                           <button data-toggle='modal' href='#modalArea' class ='btnShowArea btn btn-primary btn-xs' title='Actualizar'><span class='fa fas fa-edit'></button>"
                             }
                         ]
                     } );

@@ -33,7 +33,7 @@
               <a href="{{route('area.index')}}"><i class="fa fa-list-ul"></i> Áreas</a>
             </li>
             <li>
-              <a href="cards.html"><i class="fa fa-users"></i> Clientes</a>
+              <a href="{{route('client.index')}}"><i class="fa fa-users"></i> Clientes</a>
             </li>
             <li>
               <a href="cards.html"><i class="fa fa-shopping-cart"></i> Productos</a>

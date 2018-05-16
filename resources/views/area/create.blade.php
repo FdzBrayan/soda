@@ -1,4 +1,4 @@
-<div class="modal" id="modalCreateArea" tabindex="-1" role="dialog">
+<div class="modal" id="modalArea" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
