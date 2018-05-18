@@ -62,6 +62,9 @@
     <script src="{{ asset('js/sb-admin-charts.js') }}"></script>
     <!-- SweetAlert2-->
     <script src="{{ asset('js/sweetalert2/sweetalert2.js') }}"></script>
+    <!-- select2-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   </div>
   @yield('script')
 </body>

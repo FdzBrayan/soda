@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Routes sale
+Route::resource('sale', 'SaleController');
+//Routes sale
+
 //Routes client
 Route::resource('client', 'ClientController');
 //Routes client

@@ -11,7 +11,6 @@ class ClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         DB::table('clients')->insert([
             [
                 'id' => '1',
@@ -26,7 +25,7 @@ class ClientsTableSeeder extends Seeder
                 'id' => '2',
                 'area_id' => '2',
                 'first_name' => 'Roberth',
-                'second_name' => 'N/A',
+                'second_name' => null,
                 'nickname' => 'Gallo',
                 'first_lastname' => 'Parra',
                 'second_lastname' => 'Alpizar',
