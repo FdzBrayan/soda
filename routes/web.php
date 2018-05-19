@@ -25,6 +25,7 @@ Route::resource('sale', 'SaleController');
 
 //Routes client
 Route::resource('client', 'ClientController');
+Route::get('getAllClients', 'ClientController@getAll');
 //Routes client
 
 //Routes area
