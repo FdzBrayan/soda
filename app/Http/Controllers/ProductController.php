@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
-use App\Models\Area;
+use App\Models\Product;
 
-class ClientController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +14,14 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $areas = Area::all();
-        return view("client.index")->with('areas', $areas);
+        //
     }
 
-    public function getAll()
+    public function getAll(Request $request)
     {
-        return Client::with('area')->get();
+        return Product::where('name', 'like', '%' . $request->q . '%')->orderBy('name','asc')->get();
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,8 +40,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->all());
-        return $client;
+        //
     }
 
     /**

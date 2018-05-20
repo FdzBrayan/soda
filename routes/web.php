@@ -32,3 +32,8 @@ Route::get('getAllClients', 'ClientController@getAll');
 Route::resource('area', 'AreaController');
 Route::get('getAllAreas', 'AreaController@getAll');
 //Routes area
+
+//Routes product
+Route::resource('product', 'ProductController');
+Route::get('getAllProducts', 'ProductController@getAll');
+//Routes product

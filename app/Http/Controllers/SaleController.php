@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Product;
 
 class SaleController extends Controller
 {
@@ -14,8 +15,9 @@ class SaleController extends Controller
      */
     public function index()
     {
+        $products = Product::orderBy('name','asc')->get();
         $clients = Client::get();
-        return view('sale')->with('clients', $clients);
+        return view('sale')->with('clients', $clients)->with('products', $products);
     }
 
     /**

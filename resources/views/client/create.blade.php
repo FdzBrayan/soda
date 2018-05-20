@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
       <div class="container">
-        <form id="formCliente">
+        <form id="formClient">
         {!! csrf_field() !!}
           <div class="form-group row">
             <label for="first_name" class="col-sm-2 col-form-label col-form-label-sm">Primer nombre</label>
@@ -41,12 +41,22 @@
               <input type="text" class="form-control form-control-sm" name="nickname" id="nickname" placeholder="Apodo">
             </div>
           </div>
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <label for="areas" class="col-sm-2 col-form-label col-form-label-sm">Área</label>
+              <select name="area_id" id="areas" class="form-control">
+                @foreach($areas as $area)
+                  <option value="{{ $area->id }}">{{$area->name}}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
         </form>
       </div>
       </div>
       <div class="modal-footer">
-        <button id="btnCreateCliente"type="button" class="btn btn-primary">Crear</button>
-        <button id="btnUpdateCliente"type="button" class="btn btn-primary">Actualizar</button>
+        <button id="btnCreateClient"type="button" class="btn btn-primary">Crear</button>
+        <button id="btnUpdateClient"type="button" class="btn btn-primary">Actualizar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

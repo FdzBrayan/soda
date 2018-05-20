@@ -10,11 +10,11 @@
         <i class="fa fa-table"></i> Lista de Clientes</div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered" id="tableClientes" width="100%" cellspacing="0">
+          <table class="table table-bordered" id="tableClients" width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th>Código</th>
-                <th>Código Área</th>
+                <th>Área</th>
                 <th>Nombre</th>
                 <th>Seg. nombre</th>
                 <th>Apellido</th>
@@ -33,17 +33,17 @@
 
 @section('script')
 <script>
-    var dataClientes;
+    var dataClients;
 
     $(document).ready(function() {
-        getDataClientes();
+        getDataClients();
     } );
 
-    function initTableClientes()
+    function initTableClients()
     {
-         tableClientes =  $('#tableClientes').DataTable( {
+         tableClients =  $('#tableClients').DataTable( {
                         destroy: true,
-                        data: dataClientes,
+                        data: dataClients,
                         columns: [
                             { data: 'id' },
                             { data: 'area.name' },
@@ -58,52 +58,55 @@
                         ]
                     } );
 
-      /*  $('#tableClientes tbody').on( 'click', '.btnShowCliente', function () {
-            rowArea = tableAreas.row($(this).parents('tr') ).data();
-            console.log('roClienteSelected:', rowArea);
-            //$('#name').val(rowArea['name']);
-            //$('#icon').val(rowArea['icon']);
-        });*/
+        $('#tableClients tbody').on( 'click', '.btnShowCliente', function () {
+            rowClient = tableClients.row($(this).parents('tr') ).data();
+            console.log('rowClienteSelected:', rowClient);
+             $('#first_name').val(rowClient['first_name']);
+             $('#second_name').val(rowClient['second_name']);
+             $('#nickname').val(rowClient['nickname']);
+             $('#first_lastname').val(rowClient['first_lastname']);
+             $('#second_lastname').val(rowClient['second_lastname']);
+        });
     }
 
-    function getDataClientes()
+    function getDataClients()
     {
         $.ajax({
             dataType: 'json',
             url: 'getAllClients',
         }).done(function(data) {
-            dataClientes = data;
-            console.log('dataClientes:',dataClientes);
-            initTableClientes();
+            dataClients = data;
+            console.log('dataClientes:',dataClients);
+            initTableClients();
         });
     }
-/*
-    $("#btnCreateArea").click(function() {
+
+    $("#btnCreateClient").click(function() {
 
         $.ajax({
             dataType: 'json',
             type:'POST',
-            url: "area",
-            data: $("#formArea").serialize(),
+            url: "client",
+            data: $("#formClient").serialize(),
         }).done(function(data){        
             swal('¡Bien!', 'Registro agregado', 'success')
-            getDataAreas();
+            getDataClients();
             closeModal();
         });
     });
 
 
-    $("#btnUpdateArea").click(function() {
+    $("#btnUpdateClient").click(function() {
 
         $.ajax({
             dataType: 'json',
             type:'PUT',
-            url: "area/"+rowArea['id'],
-            data: $("#formArea").serialize(),
+            url: "client/"+rowArea['id'],
+            data: $("#formClient").serialize(),
         }).done(function(data){
             console.log("result update:",data);
             swal('¡Bien!', 'Registro actualizado', 'success')
-            getDataAreas();
+            getDataClientes();
             closeModal();
         });
     });
@@ -139,10 +142,10 @@
                 }
             })
     });
-*/
+
     function resetModal()
     {
-        $('#formCliente').trigger("reset");
+        $('#formClient').trigger("reset");
     }
 
     function closeModal()
@@ -158,15 +161,15 @@
             resetModal();
             $("#btnUpdateCliente").hide();
             $("#btnCreateCliente").show();
-           /* $(".modal-title").text("Crear Área");*/
+            $(".modal-title").text("Crear Cliente");
         }
         else
         {
             $("#btnUpdateCliente").show();
             $("#btnCreateCliente").hide();
-         /*   $(".modal-title").text("Actualizar Área");*/
+            $(".modal-title").text("Actualizar Cliente");
         }
-        $('#modalArea').modal('show');
+        $('#modalClient').modal('show');
     }
 
 </script>
