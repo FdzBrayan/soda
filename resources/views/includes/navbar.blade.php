@@ -23,7 +23,7 @@
             <span class="nav-link-text">Estadísticas</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Configuraciones">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
             <span class="nav-link-text">Configuración</span>

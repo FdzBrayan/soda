@@ -3,7 +3,7 @@
 @section('content')
 @include('client.create')
     <button type="button" onclick="openModalCliente(1)" class="btn btn-success">
-        Nueva
+        Nuevo
     </button><br><br>
     <div class="card mb-3">
       <div class="card-header">
@@ -14,6 +14,7 @@
             <thead>
               <tr>
                 <th>Código</th>
+                <th>Código Área</th>
                 <th>Área</th>
                 <th>Nombre</th>
                 <th>Seg. nombre</th>
@@ -46,14 +47,25 @@
                         data: dataClients,
                         columns: [
                             { data: 'id' },
+                            { data: 'area_id'},
                             { data: 'area.name' },
                             { data: 'first_name' },
                             { data: 'second_name' },
-                            { data: 'nickname' },
                             { data: 'first_lastname' },
                             { data: 'second_lastname' },
-                            { data: null, defaultContent: "<button class ='btnDeleteCliente btn btn-danger btn-xs' title='Eliminar' ><span class='fa fas fa-trash'></span></button>\n\
+                            { data: 'nickname' },
+                            { data: null, defaultContent: "<button class ='btnDeleteClient btn btn-danger btn-xs' title='Eliminar' ><span class='fa fas fa-trash'></span></button>\n\
                                                            <button onclick='openModalCliente(2)' class ='btnShowCliente btn btn-primary btn-xs' title='Actualizar'><span class='fa fas fa-edit'></button>"
+                            }
+                        ],
+                        "columnDefs": [
+                            {
+                                "targets": [ 0 ],
+                                "visible": false
+                            },
+                            {
+                                "targets": [ 1 ],
+                                "visible": false
                             }
                         ]
                     } );
@@ -66,6 +78,7 @@
              $('#nickname').val(rowClient['nickname']);
              $('#first_lastname').val(rowClient['first_lastname']);
              $('#second_lastname').val(rowClient['second_lastname']);
+             $('#area_id').val(rowClient['area_id']);
         });
     }
 
@@ -101,20 +114,20 @@
         $.ajax({
             dataType: 'json',
             type:'PUT',
-            url: "client/"+rowArea['id'],
+            url: "client/"+rowClient['id'],
             data: $("#formClient").serialize(),
         }).done(function(data){
             console.log("result update:",data);
             swal('¡Bien!', 'Registro actualizado', 'success')
-            getDataClientes();
+            getDataClients();
             closeModal();
         });
     });
 
 
-    $('#tableAreas tbody').on( 'click', '.btnDeleteArea', function () {
+    $('#tableClients tbody').on( 'click', '.btnDeleteClient', function () {
 
-        var rowArea = tableAreas.row($(this).parents('tr') ).data();
+        var rowClient = tableClients.row($(this).parents('tr') ).data();
         swal({
                 title: '¿Está seguro?',
                 text: "El registro será eliminado",
@@ -132,10 +145,10 @@
                             },
                                 dataType: 'json',
                                 type:'DELETE',
-                                url: "area/"+rowArea['id'],
+                                url: "client/"+rowClient['id'],
                             }).done(function(data){
                                 console.log("result delete:",data);                                
-                                getDataAreas();
+                                getDataClients();
                             });
 
                     swal('¡Registro eliminado!', '¡Éxito!', 'success')
@@ -159,14 +172,14 @@
         if(action == 1)
         {
             resetModal();
-            $("#btnUpdateCliente").hide();
-            $("#btnCreateCliente").show();
+            $("#btnUpdateClient").hide();
+            $("#btnCreateClient").show();
             $(".modal-title").text("Crear Cliente");
         }
         else
         {
-            $("#btnUpdateCliente").show();
-            $("#btnCreateCliente").hide();
+            $("#btnUpdateClient").show();
+            $("#btnCreateClient").hide();
             $(".modal-title").text("Actualizar Cliente");
         }
         $('#modalClient').modal('show');

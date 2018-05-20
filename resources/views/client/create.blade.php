@@ -44,7 +44,7 @@
           <div class="form-group row">
             <div class="col-sm-10">
               <label for="areas" class="col-sm-2 col-form-label col-form-label-sm">Área</label>
-              <select name="area_id" id="areas" class="form-control">
+              <select name="area_id" id="area_id" class="form-control">
                 @foreach($areas as $area)
                   <option value="{{ $area->id }}">{{$area->name}}</option>
                 @endforeach

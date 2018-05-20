@@ -47,6 +47,12 @@
                             { data: null, defaultContent: "<button class ='btnDeleteArea btn btn-danger btn-xs' title='Eliminar' ><span class='fa fas fa-trash'></span></button>\n\
                                                            <button onclick='openModalArea(2)' class ='btnShowArea btn btn-primary btn-xs' title='Actualizar'><span class='fa fas fa-edit'></button>"
                             }
+                        ],
+                        "columnDefs": [
+                            {
+                                "targets": [ 0 ],
+                                "visible": false
+                            }
                         ]
                     } );
 

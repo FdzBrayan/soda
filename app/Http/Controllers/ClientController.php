@@ -76,7 +76,17 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::where('id', $id)->update(
+            [
+             'area_id' => $request->area_id,
+             'first_name' => $request->first_name,
+             'second_name' => $request->second_name,
+             'nickname' => $request->nickname,
+             'first_lastname' => $request->first_lastname,
+             'second_lastname' => $request->second_lastname
+            ]);
+
+        return $client;
     }
 
     /**
@@ -87,6 +97,7 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::destroy($id);
+        return $client;
     }
 }
