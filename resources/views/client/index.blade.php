@@ -1,5 +1,6 @@
 @extends('layouts.master')
-@section('breadcrumb','Cliente')
+@section('breadcrumb1','Configuración')
+@section('breadcrumb2','Cliente')
 @section('content')
 @include('client.create')
     <button type="button" onclick="openModalCliente(1)" class="btn btn-success">

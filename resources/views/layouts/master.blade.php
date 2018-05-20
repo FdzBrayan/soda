@@ -27,9 +27,9 @@
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#">Dashboard</a>
+        <a href="#">@yield('breadcrumb1','Inicio')</a>
       </li>
-      <li class="breadcrumb-item active">@yield('breadcrumb','Inicio')</li>
+      <li class="breadcrumb-item active">@yield('breadcrumb2','Inicio')</li>
     </ol>
     <!-- Breadcrumbs-->
     @yield('content')

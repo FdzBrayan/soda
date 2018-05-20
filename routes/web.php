@@ -37,3 +37,8 @@ Route::get('getAllAreas', 'AreaController@getAll');
 Route::resource('product', 'ProductController');
 Route::get('getAllProducts', 'ProductController@getAll');
 //Routes product
+
+//Routes invoice
+Route::resource('invoice', 'InvoiceController');
+//Route::get('getAllInvoices', 'InvoiceController@getAll');
+//Routes invoice

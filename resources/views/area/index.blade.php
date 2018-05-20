@@ -1,5 +1,6 @@
 @extends('layouts.master')
-@section('breadcrumb','Área')
+@section('breadcrumb1','Configuración')
+@section('breadcrumb2','Área')
 @section('content')
 @include('area.create')
     <button type="button" onclick="openModalArea(1)" class="btn btn-success">

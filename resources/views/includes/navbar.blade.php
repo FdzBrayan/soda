@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Soft Food</a>
+    <a class="navbar-brand" href="index.html">Soda</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,7 +12,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Compras">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="{{route('invoice.index')}}">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Compras</span>
           </a>
@@ -141,7 +141,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
           <span class="glyphicon glyphicon-user"></span>
-            {{ __('Logout') }}
+            {{ __('Salir') }}
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
