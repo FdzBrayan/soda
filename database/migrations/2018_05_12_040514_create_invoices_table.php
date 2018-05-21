@@ -17,7 +17,7 @@ class CreateInvoicesTable extends Migration
             $table->increments('id');
             $table->string('description', 200);
             $table->double('amount',10,2);
-            $table->string('image');
+            $table->string('image')->default('default.jpg');
             $table->date('date');
             $table->timestamps();
         });

@@ -18,7 +18,7 @@
                 <th>Código Área</th>
                 <th>Área</th>
                 <th>Nombre</th>
-                <th>Seg. nombre</th>
+                <th>Seg. Nombre</th>
                 <th>Apellido</th>
                 <th>Seg. Apellido</th>
                 <th>Apodo</th>

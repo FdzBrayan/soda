@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Invoice;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {
@@ -14,6 +18,11 @@ class InvoiceController extends Controller
     public function index()
     {
         return view('invoice.index');
+    }
+
+    public function getAll()
+    {
+        return Invoice::all();
     }
 
     /**
@@ -34,7 +43,17 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('image'))
+        {
+
+            //$path = $request->file('image')->store('public');
+            $path = Storage::putFile('images', $request->file('image'),'public');
+            //dd($path);
+            $request->image = $path;
+        }
+
+        $invoice = Invoice::create($request->all());
+        return $invoice;
     }
 
     /**
@@ -79,6 +98,7 @@ class InvoiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $invoice = Invoice::destroy($id);
+        return $invoice;
     }
 }

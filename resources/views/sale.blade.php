@@ -21,8 +21,8 @@
       </select>
     </div>
     <div class="col">
-      <label for="validationServer02">Fecha</label>
-      <input type="date" class="form-control" id="" placeholder="Fecha" required>
+      <label for="fecha">Fecha</label>
+      <input type="date" class="form-control" id="fecha" placeholder="Fecha" required>
     </div>
   </div>
   <div class="row">

@@ -40,5 +40,5 @@ Route::get('getAllProducts', 'ProductController@getAll');
 
 //Routes invoice
 Route::resource('invoice', 'InvoiceController');
-//Route::get('getAllInvoices', 'InvoiceController@getAll');
+Route::get('getAllInvoices', 'InvoiceController@getAll');
 //Routes invoice
