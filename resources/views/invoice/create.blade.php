@@ -9,18 +9,18 @@
       </div>
       <div class="modal-body">
         <div class="container">
-          <form id="formInvoice" method="post" enctype="multipart/form-data">
+          <form id="formInvoice" name="formInvoice" method="post" enctype="multipart/form-data">
             {!! csrf_field() !!}
             <div class="form-group row">
               <label for="description" class="col-sm-2 col-form-label col-form-label-sm">Descripción</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control form-control-sm" name="description" id="description" placeholder="Descripción">
+                <input type="text" class="form-control form-control-sm" name="description" id="description">
               </div>
             </div>
             <div class="form-group row">
               <label for="amount" class="col-sm-2 col-form-label col-form-label-sm">Monto</label>
               <div class="col-sm-10">
-                <input type="numeric" class="form-control form-control-sm" name="amount" id="amount" placeholder="Monto">
+                <input type="number" class="form-control form-control-sm" name="amount" id="amount">
               </div>
             </div>
             <div class="form-group row">

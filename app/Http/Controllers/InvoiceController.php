@@ -45,14 +45,24 @@ class InvoiceController extends Controller
     {
         if ($request->hasFile('image'))
         {
+            $image = $request->image;
+            $originalfileName = $image->getClientOriginalName();
 
-            //$path = $request->file('image')->store('public');
-            $path = Storage::putFile('images', $request->file('image'),'public');
-            //dd($path);
-            $request->image = $path;
+            $path = $image->move('images/invoices', $originalfileName);
+        }
+        else
+        {
+            $originalfileName = "default.jpg";
         }
 
-        $invoice = Invoice::create($request->all());
+        $invoice = Invoice::create(
+            [
+             'description' => $request->description,
+             'amount' => $request->amount,
+             'date' => $request->date,
+             'image' => $originalfileName
+            ]);
+
         return $invoice;
     }
 

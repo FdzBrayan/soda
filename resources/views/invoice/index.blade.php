@@ -95,22 +95,22 @@
     */
 
 
-    $("#formInvoice").submit(function() {
-
-        var formData = new FormData($(this)[0]);
-
+    $("#formInvoice").on('submit',function(e) {
+        
+        e.preventDefault();
         $.ajax({
             dataType: 'json',
             type:'POST',
             url: "invoice",
-            data: formData,
-            cache: false,
+            data: new FormData(this),
+            contentType: false,
             processData: false
         }).done(function(data){        
             swal('¡Bien!', 'Registro agregado', 'success')
             getDataInvoices();
             closeModal();
         });
+
     });
 
 
