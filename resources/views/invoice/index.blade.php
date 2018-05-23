@@ -18,6 +18,7 @@
                 <th>Descripción</th>
                 <th>Monto</th>
                 <th>Fecha</th>
+                <th>Foto</th>
                 <th>Opción</th>
               </tr>
             </thead>
@@ -46,6 +47,7 @@
                             { data: 'description' },
                             { data: 'amount' },
                             { data: 'date' },
+                            { data: 'image', render: showImage },
                             { data: null, defaultContent: "<button class ='btnDeleteInvoice btn btn-danger btn-xs' title='Eliminar' ><span class='fa fas fa-trash'></span></button>\n\
                                                            <button onclick='openModalInvoice(2)' class ='btnShowInvoice btn btn-primary btn-xs' title='Actualizar'><span class='fa fas fa-edit'></button>"
                             }
@@ -67,6 +69,11 @@
         });
     }
 
+    function showImage(data, type, full, meta)
+    {
+        return "<img src=images/invoices/"+data+" height='42' width='42'></img>";
+    }
+
     function getDataInvoices()
     {
         $.ajax({
@@ -78,22 +85,6 @@
             initTableInvoices();
         });
     }
-
- /*   $("#btnCreateInvoice").click(function() {
-
-        $.ajax({
-            dataType: 'json',
-            type:'POST',
-            url: "invoice",
-            data: $("#formInvoice").serialize(),
-        }).done(function(data){        
-            swal('¡Bien!', 'Registro agregado', 'success')
-            getDataInvoices();
-            closeModal();
-        });
-    });
-    */
-
 
     $("#formInvoice").on('submit',function(e) {
         

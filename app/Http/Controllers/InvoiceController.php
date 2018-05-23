@@ -52,7 +52,7 @@ class InvoiceController extends Controller
         }
         else
         {
-            $originalfileName = "default.jpg";
+            $originalfileName = "default.png";
         }
 
         $invoice = Invoice::create(
