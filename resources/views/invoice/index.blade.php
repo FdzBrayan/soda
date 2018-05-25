@@ -35,7 +35,26 @@
 
     $(document).ready(function() {
         getDataInvoices();
-    } );
+
+        $('#image').fileinput({
+            theme: 'fa',
+            language: 'es',
+            uploadUrl: '#',
+            actionUpload: false,
+            showRemove: false,
+            showUpload: false,
+            showUploadedThumbs: false,
+            dropZoneEnabled: false,
+            maxFileCount: 3,
+            mainClass: "input-group-md",
+            allowedFileExtensions: ['jpg', 'png', 'gif'],
+            fileActionSettings: { 
+            // Deshabilita 
+            showUpload: false, 
+            }
+        });
+
+    });
 
     function initTableInvoices()
     {
@@ -69,7 +88,7 @@
         });
     }
 
-    function showImage(data, type, full, meta)
+    function showImage(data)
     {
         return "<img src=images/invoices/"+data+" height='42' width='42'></img>";
     }
@@ -169,7 +188,7 @@
             resetModal();
             $("#btnUpdateInvoice").hide();
             $("#btnCreateInvoice").show();
-            $(".modal-title").text("Resgistrar Factura");
+            $(".modal-title").text("Registrar Factura");
         }
         else
         {

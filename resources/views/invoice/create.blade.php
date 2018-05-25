@@ -30,8 +30,7 @@
               </div>
             </div>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" name="image" id="image">
-              <label class="custom-file-label" for="image">Subir imagen</label>
+              <input type="file" class="custom-file-input" name="image[]" id="image" multiple>
             </div>
         </div>
       </div>
