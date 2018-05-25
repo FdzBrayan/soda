@@ -16,6 +16,8 @@
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" >
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet" type="text/css" >
+  <!-- input-file-->
+  <link href="{{ asset('js/input-file/fileinput.min.css') }}" rel="stylesheet" type="text/css" >
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -65,6 +67,10 @@
     <!-- select2-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <!-- input-file-->
+    <script src="{{ asset('js/input-file/fileinput.min.js') }}"></script>
+    <script src="{{ asset('js/input-file/locales/es.js') }}"></script>
+    <script src="{{ asset('js/input-file/fa/theme.js') }}"></script>
   </div>
   @yield('script')
 </body>

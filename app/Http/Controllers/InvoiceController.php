@@ -45,7 +45,7 @@ class InvoiceController extends Controller
     {
         if ($request->hasFile('image'))
         {
-            $image = $request->image;
+            $image = $request->image[0];
             $originalfileName = $image->getClientOriginalName();
 
             $path = $image->move('images/invoices', $originalfileName);
