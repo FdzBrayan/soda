@@ -35,19 +35,27 @@
 
     $(document).ready(function() {
         getDataInvoices();
+        var url1 = 'http://localhost/soda/public/images/invoices/default.png';
 
         $('#image').fileinput({
+            initialPreview: [url1],
+            initialPreviewAsData: true,
             theme: 'fa',
             language: 'es',
-            uploadUrl: '#',
+            //uploadUrl: '#',
             actionUpload: false,
             showRemove: false,
             showUpload: false,
             showUploadedThumbs: false,
             dropZoneEnabled: false,
             maxFileCount: 3,
+            overwriteInitial: false,
             mainClass: "input-group-md",
             allowedFileExtensions: ['jpg', 'png', 'gif'],
+            initialPreviewConfig: [
+                {caption: "default.png", downloadUrl: url1, size: 930321, width: "120px", key: 1},
+               // {caption: "Earth.jpg", downloadUrl: url2, size: 1218822, width: "120px", key: 2}
+            ],
             fileActionSettings: { 
             // Deshabilita 
             showUpload: false, 

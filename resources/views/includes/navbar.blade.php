@@ -7,14 +7,14 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Ventas">
           <a class="nav-link" href="{{route('sale.index')}}">
-            <i class="fa fa-fw fa-dashboard"></i>
+            <i class="fa fa-shopping-basket"></i>
             <span class="nav-link-text">Ventas</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Compras">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gastos">
           <a class="nav-link" href="{{route('invoice.index')}}">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Compras</span>
+            <i class="fa fa-file-text-o"></i>
+            <span class="nav-link-text">Gastos</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Estadísticas">

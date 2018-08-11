@@ -2,8 +2,8 @@
 @section('breadcrumb','Ventas')
 @section('content')
 <style>
-  #formSale{
-    margin: 2%;
+  .row{
+    margin-top: 2%;
   }
 
   #tableProducts{
@@ -12,7 +12,7 @@
 </style>
 <form>
   <div class="row">
-    <div class="col">
+    <div class="col-5">
       <label for="clients">Cliente</label>
       <select name="client_id" id="clients" class="form-control">
         @foreach($clients as $client)
@@ -20,13 +20,13 @@
         @endforeach
       </select>
     </div>
-    <div class="col">
+    <div class="col-3">
       <label for="fecha">Fecha</label>
       <input type="date" class="form-control" id="fecha" placeholder="Fecha" required>
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-5">
       <label for="products">Producto</label>
       <select name="product_id" id="products" class="form-control">
         @foreach($products as $product)
@@ -34,13 +34,16 @@
         @endforeach
       </select>
     </div>
-    <div class="col">
+    <div class="col-2">
       <label for="">Cantidad</label>
-      <input type="number" class="form-control" id="" placeholder="Cantidad" required>
+      <input type="number" class="form-control" id="quantity" value="1" min="1" placeholder="Cantidad" required>
     </div>
-    <div class="col">
+    <div class="col-3">
       <label for="">Precio Uni.</label>
-      <input type="text" class="form-control" id="" placeholder="Precio Uni." required>
+      <input type="text" class="form-control" id="price" placeholder="Precio Uni." disabled>
+    </div>
+    <div class="col-1">
+     <button type="button" class="btn btn-success">Agregar</button>
     </div>
   </div>
 </form>
@@ -82,6 +85,14 @@
 <script>
   $(document).ready(function () {
     $('#clients').select2();
+
+    $('#clients').on('select2:select', function (e) {
+      var data = e.params.data;
+      console.log('Client selected:', data);
+     // $('#products').focus();
+     $('#products').select2('open');
+    });
+
     $('#products').select2({
                 ajax : {
                     url : 'getAllProducts',
@@ -115,6 +126,13 @@
                     return repo.text;
                 },
                 escapeMarkup : function(markup){ return markup; }
+            });
+
+            $('#products').on('select2:select', function (e) {
+              var data = e.params.data;
+              console.log('Product selected:', data);
+              $('#quantity').focus();
+              $('#price').val(data.price);
             });
   });
 </script> 
